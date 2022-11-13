@@ -24,9 +24,7 @@ public class Interface extends javax.swing.JFrame {
     
     void exportar(){
         
-        String sql= "select * from inventario where fec_ini>= '"+jTextField1.getText()+"' and fec_fin<= '"+jTextField2.getText()
-                +"' into outfile 'C:\\\\ProgramData\\\\MySQL\\\\MySQL Server 8.0\\\\Uploads\\\\producto.txt'"
-                + " fields terminated by '  ' lines terminated by '\n'";
+        String sql= "load data infile 'C:\\\\ProgramData\\\\MySQL\\\\MySQL Server 8.0\\\\Uploads\\\\producto.txt' INTO TABLE inventario FIELDS TERMINATED BY '  ' LINES TERMINATED BY '\\n'";
         Statement st;
         try{
         st=cn.createStatement();
@@ -51,10 +49,6 @@ public class Interface extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -63,61 +57,24 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Exportar");
+        jButton1.setText("Importar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 90, 40));
-        jButton1.getAccessibleContext().setAccessibleName("Exportar");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 130, 60));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        jLabel1.setText("Exportar Informacion");
+        jLabel1.setText("Importar Informacion Del Archivo");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 30));
-
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel2.setText("Fecha Final");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
-
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setText("YY-MM-DD");
-        jTextField1.setName("txt1"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 80, 30));
-
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel3.setText("Fecha Inicial");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setText("YY-MM-DD");
-        jTextField2.setName("txt2"); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 80, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       exportar();     // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,10 +114,6 @@ public class Interface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel{
 private Image imagen;
